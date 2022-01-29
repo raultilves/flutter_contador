@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 
@@ -7,7 +7,6 @@ class ContadorPage extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _ContadorPageState();
   }
-
 }
 
 class _ContadorPageState extends State<ContadorPage>{
@@ -22,25 +21,49 @@ class _ContadorPageState extends State<ContadorPage>{
 				centerTitle: true,
 				backgroundColor: Colors.cyan,
 			),
-			body: Center(
-				child: Column(
-					children: [
-						Text("Número de clicks:", style: estiloTexto,),
-						Text(_contador.toString(), style: estiloTexto,)
-					],
-					mainAxisAlignment: MainAxisAlignment.center,
-				)
-			),
-			floatingActionButton: FloatingActionButton(
-				child: Icon(Icons.add),
-				onPressed: () {
-          setState(() {
-            _contador++;
-          });
-				},
-			),
-			floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-		);
+			body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Spacer(flex: 1),
+          Text("Número de clicks:", style: estiloTexto,),
+          Text(_contador.toString(), style: estiloTexto,),   
+          Expanded(
+            child: Align(
+                alignment: Alignment.bottomCenter,
+                child: ButtonBar(
+                  buttonPadding:EdgeInsets.all(20),
+                  alignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: (){
+                        setState(() {
+                          _contador--;
+                        });
+                      }, 
+                      child: Text("-")
+                    ),
+                    ElevatedButton(
+                      onPressed: (){
+                        setState(() {
+                          _contador++;
+                        });
+                      }, 
+                      child: Text("+")
+                    ),
+                    ElevatedButton(
+                      onPressed: (){
+                        setState(() {
+                          _contador = 0;
+                        });
+                      }, 
+                      child: Text("0")
+                    ),
+                  ],
+                )
+              )
+            )
+        ]
+      ),
+    );
   }
-  
 }
