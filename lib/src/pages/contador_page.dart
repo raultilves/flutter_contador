@@ -17,7 +17,7 @@ class _ContadorPageState extends State<ContadorPage>{
   Widget build(BuildContext context) {
     return Scaffold(
 			appBar: AppBar(
-				title: Text('Título'),
+				title: Text('Contador antiestrés'),
 				centerTitle: true,
 				backgroundColor: Colors.cyan,
 			),
@@ -37,10 +37,16 @@ class _ContadorPageState extends State<ContadorPage>{
                     ElevatedButton(
                       onPressed: (){
                         setState(() {
-                          _contador--;
+                          if (_contador > 0) {
+                            _contador--;
+                          }
+                          
                         });
                       }, 
-                      child: Text("-")
+                      child: Text("-"),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.red
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: (){
@@ -48,7 +54,10 @@ class _ContadorPageState extends State<ContadorPage>{
                           _contador++;
                         });
                       }, 
-                      child: Text("+")
+                      child: Text("+"),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: (){

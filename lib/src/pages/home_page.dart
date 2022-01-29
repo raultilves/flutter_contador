@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/pages/contador_page.dart';
 
 class HomePage extends StatelessWidget {
 	
@@ -10,23 +11,17 @@ class HomePage extends StatelessWidget {
   	Widget build(BuildContext context) {
 		return Scaffold(
 			appBar: AppBar(
-				title: Text('Título'),
+				title: Text('Contador antiestrés'),
 				centerTitle: true,
 				backgroundColor: Colors.cyan,
 			),
 			body: Center(
-				child: Column(
-					children: [
-						Text("Número de clicks:", style: estiloTexto,),
-						Text("0", style: estiloTexto,)
-					],
-					mainAxisAlignment: MainAxisAlignment.center,
-				) 
+				child: Text("¡Bienvenido!, pulsa el botón cuando estes listo :)", textAlign: TextAlign.center, style: estiloTexto),
 			),
 			floatingActionButton: FloatingActionButton(
-				child: Icon(Icons.add),
+				child: Icon(Icons.play_arrow),
 				onPressed: () {
-					print("Holiwi");
+					Navigator.push(context, MaterialPageRoute(builder: (context) => ContadorPage()));
 				},
 			),
 			floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
