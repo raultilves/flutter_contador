@@ -16,7 +16,14 @@ class HomePage extends StatelessWidget {
 				backgroundColor: Colors.cyan,
 			),
 			body: Center(
-				child: Text("¡Bienvenido!, pulsa el botón cuando estes listo :)", textAlign: TextAlign.center, style: estiloTexto),
+        child: Column(
+          children: [
+            Text("¡Bienvenido!, pulsa el botón cuando estes listo :)", textAlign: TextAlign.center, style: estiloTexto),
+            Padding(padding: EdgeInsets.all(20)),
+            Text("Recuerda que a veces es necesario parar a tomarte un descanso", textAlign: TextAlign.center, style: estiloTexto),
+          ],
+          mainAxisAlignment: MainAxisAlignment.center,
+        )
 			),
 			floatingActionButton: FloatingActionButton(
 				child: Icon(Icons.play_arrow),

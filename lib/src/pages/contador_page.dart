@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class ContadorPage extends StatefulWidget {
@@ -36,12 +37,16 @@ class _ContadorPageState extends State<ContadorPage>{
                   children: [
                     ElevatedButton(
                       onPressed: (){
-                        setState(() {
-                          if (_contador > 0) {
-                            _contador--;
-                          }
-                          
-                        });
+                        if (_contador > 0) {
+                          setState(() {
+                          _contador--;
+                          });
+                          AudioCache cache = AudioCache();
+                          cache.play("bonk.mp3");
+                        } else {
+                          AudioCache cache = AudioCache();
+                          cache.play("erro.mp3");
+                        }                      
                       }, 
                       child: Text("-"),
                       style: ElevatedButton.styleFrom(
@@ -53,6 +58,8 @@ class _ContadorPageState extends State<ContadorPage>{
                         setState(() {
                           _contador++;
                         });
+                        AudioCache cache = AudioCache();
+                        cache.play("pewpew.mp3");
                       }, 
                       child: Text("+"),
                       style: ElevatedButton.styleFrom(
@@ -60,10 +67,12 @@ class _ContadorPageState extends State<ContadorPage>{
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: (){
+                      onPressed: () async {
                         setState(() {
                           _contador = 0;
                         });
+                        AudioCache cache = AudioCache();
+                        cache.play("vine-boom.mp3");
                       }, 
                       child: Text("0")
                     ),
